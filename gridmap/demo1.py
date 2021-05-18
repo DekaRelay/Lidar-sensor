@@ -5,7 +5,7 @@ import seaborn as sb
 import math
 import random
 
-plt.ion()  #打开交互模式
+plt.ion()  # Open the interact model
 while 1:
     # Read data
     # np.random.seed(20210511)
@@ -21,7 +21,7 @@ while 1:
 
     # Fill the fig
     cmap = "greys"
-    sb.heatmap(x, vmin=0,#图例（右侧颜色条color bar）中最小显示值
+    sb.heatmap(x, vmin=0, # y axis range
                  vmax=40, cmap=plt.get_cmap('Greys')) #annot=True
     plt.show(block=False)
     plt.pause(0.1)
