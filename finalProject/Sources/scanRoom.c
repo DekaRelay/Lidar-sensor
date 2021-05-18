@@ -16,6 +16,9 @@ int overflow;                                 //Stores the overflow number of ti
 int pulse_width;                              //Stores the size of the pulse in timer counts
 double length;                                //Stores the size of the pulse in milliseconds
 double distance;                              //Recives the pulse length in m
+int x;
+int y;
+int points; 
 
 
 double scanRoom(void) {
@@ -31,9 +34,7 @@ double scanRoom(void) {
    initLidar();
 
    //Initialise loop variables and dimension of LiDAR position matrix
-   int x;
-   int y;
-   int points = 8;
+   points = 8;
 
    //Loop through vertical positions, rows
    for (x = points; x >= 0; --x){
