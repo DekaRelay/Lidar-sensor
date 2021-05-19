@@ -1,14 +1,18 @@
 #include <hidef.h>      /* common defines and macros */
 #include "derivative.h"      /* derivative-specific definitions */
+#include "structs.h"
+#include "functions.h"
+#include "interrupts.h"
 
-
+//Table variable which will contain vector 
+double data;
 
 void main(void) {
-  /* put your own code here */
-  
+  //function for scanning room
+  data = scanRoom();
 
 
-	EnableInterrupts;
+
 
 
   for(;;) {
