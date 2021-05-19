@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="320e27ba-5f8b-4515-8c63-1de9400dc9a1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo1.py" beforeDir="false" afterPath="$PROJECT_DIR$/demo1.py" afterDir="false" />
-    </list>
+    <list default="true" id="320e27ba-5f8b-4515-8c63-1de9400dc9a1" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,11 +14,7 @@
       </list>
     </option>
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
   <component name="ProjectId" id="1sNcwgZwrIxp5sH93TbWE7Mmo5l" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -29,10 +22,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/demo1.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/main.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.demo1">
+  <component name="RunManager" selected="Python.grid_map">
     <configuration name="demo1" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="gridmap" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -75,9 +68,31 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="read_sci" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="gridmap" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\10074\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/read_sci.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.demo1" />
       <item itemvalue="Python.grid_map" />
+      <item itemvalue="Python.read_sci" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -94,10 +109,11 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1620878689336">
-      <screen x="0" y="0" width="1280" height="689" />
+    <state x="2035" y="-53" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1621413437442">
+      <screen x="1920" y="-53" width="1536" height="834" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.689/1920.-53.1536.834@0.0.1280.689" timestamp="1620717218480" />
+    <state x="2035" y="-53" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.689/1920.-53.1536.834@1920.-53.1536.834" timestamp="1621413437442" />
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.689@0.0.1280.689" timestamp="1620878689336" />
     <state x="361" y="0" key="#demo1" timestamp="1620717000986">
       <screen x="0" y="0" width="1280" height="689" />
@@ -107,49 +123,48 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="361" y="20" key="#main/0.0.1280.689/1920.-53.1536.834@0.0.1280.689" timestamp="1620716782688" />
-    <state x="421" y="100" key="FileChooserDialogImpl" timestamp="1620878688204">
-      <screen x="0" y="0" width="1280" height="689" />
+    <state x="2425" y="68" key="FileChooserDialogImpl" timestamp="1621412577038">
+      <screen x="1920" y="-53" width="1536" height="834" />
     </state>
     <state x="421" y="100" key="FileChooserDialogImpl/0.0.1280.689/1920.-53.1536.834@0.0.1280.689" timestamp="1620717180348" />
+    <state x="2425" y="68" key="FileChooserDialogImpl/0.0.1280.689/1920.-53.1536.834@1920.-53.1536.834" timestamp="1621412577038" />
     <state x="421" y="100" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1620878688204" />
-    <state width="1515" height="222" key="GridCell.Tab.0.bottom" timestamp="1620973785695">
+    <state width="1515" height="91" key="GridCell.Tab.0.bottom" timestamp="1621416441129">
       <screen x="1920" y="-53" width="1536" height="834" />
     </state>
-    <state width="1259" height="173" key="GridCell.Tab.0.bottom/0.0.1280.689/1920.-53.1536.834@0.0.1280.689" timestamp="1620961037042" />
-    <state width="1515" height="222" key="GridCell.Tab.0.bottom/0.0.1280.689/1920.-53.1536.834@1920.-53.1536.834" timestamp="1620973785695" />
+    <state width="1259" height="215" key="GridCell.Tab.0.bottom/0.0.1280.689/1920.-53.1536.834@0.0.1280.689" timestamp="1621414231522" />
+    <state width="1515" height="91" key="GridCell.Tab.0.bottom/0.0.1280.689/1920.-53.1536.834@1920.-53.1536.834" timestamp="1621416441129" />
     <state width="1259" height="73" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1620888934210" />
-    <state width="1515" height="222" key="GridCell.Tab.0.center" timestamp="1620973785695">
+    <state width="1515" height="91" key="GridCell.Tab.0.center" timestamp="1621416441129">
       <screen x="1920" y="-53" width="1536" height="834" />
     </state>
-    <state width="1259" height="173" key="GridCell.Tab.0.center/0.0.1280.689/1920.-53.1536.834@0.0.1280.689" timestamp="1620961037042" />
-    <state width="1515" height="222" key="GridCell.Tab.0.center/0.0.1280.689/1920.-53.1536.834@1920.-53.1536.834" timestamp="1620973785695" />
+    <state width="1259" height="215" key="GridCell.Tab.0.center/0.0.1280.689/1920.-53.1536.834@0.0.1280.689" timestamp="1621414231521" />
+    <state width="1515" height="91" key="GridCell.Tab.0.center/0.0.1280.689/1920.-53.1536.834@1920.-53.1536.834" timestamp="1621416441129" />
     <state width="1259" height="73" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1620888934210" />
-    <state width="1515" height="222" key="GridCell.Tab.0.left" timestamp="1620973785695">
+    <state width="1515" height="91" key="GridCell.Tab.0.left" timestamp="1621416441129">
       <screen x="1920" y="-53" width="1536" height="834" />
     </state>
-    <state width="1259" height="173" key="GridCell.Tab.0.left/0.0.1280.689/1920.-53.1536.834@0.0.1280.689" timestamp="1620961037041" />
-    <state width="1515" height="222" key="GridCell.Tab.0.left/0.0.1280.689/1920.-53.1536.834@1920.-53.1536.834" timestamp="1620973785695" />
+    <state width="1259" height="215" key="GridCell.Tab.0.left/0.0.1280.689/1920.-53.1536.834@0.0.1280.689" timestamp="1621414231521" />
+    <state width="1515" height="91" key="GridCell.Tab.0.left/0.0.1280.689/1920.-53.1536.834@1920.-53.1536.834" timestamp="1621416441129" />
     <state width="1259" height="73" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1620888934209" />
-    <state width="1515" height="222" key="GridCell.Tab.0.right" timestamp="1620973785695">
+    <state width="1515" height="91" key="GridCell.Tab.0.right" timestamp="1621416441129">
       <screen x="1920" y="-53" width="1536" height="834" />
     </state>
-    <state width="1259" height="173" key="GridCell.Tab.0.right/0.0.1280.689/1920.-53.1536.834@0.0.1280.689" timestamp="1620961037042" />
-    <state width="1515" height="222" key="GridCell.Tab.0.right/0.0.1280.689/1920.-53.1536.834@1920.-53.1536.834" timestamp="1620973785695" />
+    <state width="1259" height="215" key="GridCell.Tab.0.right/0.0.1280.689/1920.-53.1536.834@0.0.1280.689" timestamp="1621414231522" />
+    <state width="1515" height="91" key="GridCell.Tab.0.right/0.0.1280.689/1920.-53.1536.834@1920.-53.1536.834" timestamp="1621416441129" />
     <state width="1259" height="73" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1620888934210" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1620717372830">
-      <screen x="0" y="0" width="1280" height="689" />
+    <state x="2090" y="-53" key="SettingsEditor" timestamp="1621318242744">
+      <screen x="1920" y="-53" width="1536" height="834" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.689/1920.-53.1536.834@0.0.1280.689" timestamp="1620717372829" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/demo1.py</url>
-          <line>23</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="2090" y="-53" key="SettingsEditor/0.0.1280.689/1920.-53.1536.834@1920.-53.1536.834" timestamp="1621318242744" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1621411572174">
+      <screen x="1920" y="-53" width="1536" height="834" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1280.689/1920.-53.1536.834@1920.-53.1536.834" timestamp="1621411572174" />
+    <state x="2351" y="102" width="672" height="678" key="search.everywhere.popup" timestamp="1621315160283">
+      <screen x="1920" y="-53" width="1536" height="834" />
+    </state>
+    <state x="2351" y="102" width="672" height="678" key="search.everywhere.popup/0.0.1280.689/1920.-53.1536.834@1920.-53.1536.834" timestamp="1621315160283" />
   </component>
 </project>
