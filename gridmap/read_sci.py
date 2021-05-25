@@ -19,7 +19,7 @@ class Map:
     def read_data_from_sci(self):
         # Read 8*8 data at once
         for i in range(PIXEL_SIZE):
-            self.x[i] = self.ser.read().hex()
+            self.x[i] = int(self.ser.read(8),2)
             # self.x[i] = i-20
         return self.x
 
