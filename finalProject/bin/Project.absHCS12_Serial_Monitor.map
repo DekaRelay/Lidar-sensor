@@ -1,5 +1,5 @@
 *** EVALUATION ***
-PROGRAM "Y:\MTRX2700--MP3\finalProject\bin\Project.abs"
+PROGRAM "Y:\MTRX2700--MP3\finalProject\bin\Project.absHCS12_Serial_Monitor.abs"
 
 *********************************************************************************************
 TARGET SECTION
@@ -31,8 +31,8 @@ Entry point: 0xC000 (_Startup)
 _startupData is allocated at 0xC00B and uses 6 Bytes
 extern struct _tagStartup {
   unsigned nofZeroOut     1
-  _Range   pZeroOut       0x1100     40
-  _Copy    *toCopyDownBeg 0xC535
+  _Range   pZeroOut       0x1100     38
+  _Copy    *toCopyDownBeg 0xC53C
 } _startupData;
 
 *********************************************************************************************
@@ -41,9 +41,9 @@ Section Name                    Size  Type     From       To       Segment
 ---------------------------------------------------------------------------------------------
 .init                             11     R     0xC000     0xC00A   ROM_C000
 .startData                        10     R     0xC00B     0xC014   ROM_C000
-NON_BANKED                      1312     R     0xC015     0xC534   ROM_C000
-.copy                              2     R     0xC535     0xC536   ROM_C000
-.text                           1065     R   0x308000   0x308428   PAGE_30
+NON_BANKED                      1319     R     0xC015     0xC53B   ROM_C000
+.copy                              2     R     0xC53C     0xC53D   ROM_C000
+.text                            949     R   0x308000   0x3083B4   PAGE_30
 .stack                           256   R/W     0x1000     0x10FF   RAM
 .abs_section_8                     1   N/I        0x8        0x8   .absSeg0
 .abs_section_9                     1   N/I        0x9        0x9   .absSeg1
@@ -387,12 +387,12 @@ NON_BANKED                      1312     R     0xC015     0xC534   ROM_C000
 .abs_section_2ae                   2   N/I      0x2AE      0x2AF   .absSeg339
 .abs_section_2be                   2   N/I      0x2BE      0x2BF   .absSeg340
 .abs_section_ff80                126     R     0xFF80     0xFFFD   .absSeg341
-.common                           40   R/W     0x1100     0x1127   RAM
+.common                           38   R/W     0x1100     0x1125   RAM
 .vectSeg342_vect                   2     R     0xFFFE     0xFFFF   .vectSeg342
 
 Summary of section sizes per section type:
-READ_ONLY (R):         9E0 (dec:     2528)
-READ_WRITE (R/W):      128 (dec:      296)
+READ_ONLY (R):         973 (dec:     2419)
+READ_WRITE (R/W):      126 (dec:      294)
 NO_INIT (N/I):         190 (dec:      400)
 
 *********************************************************************************************
@@ -456,9 +456,9 @@ MODULE:                 -- mc9s12dg256.c.o --
      _TCTL3                                      4A       1       1       0   .abs_section_4a
      _TCTL4                                      4B       1       1       2   .abs_section_4b
      _TIE                                        4C       1       1       0   .abs_section_4c
-     _TSCR2                                      4D       1       1       2   .abs_section_4d
+     _TSCR2                                      4D       1       1       1   .abs_section_4d
      _TFLG1                                      4E       1       1       3   .abs_section_4e
-     _TFLG2                                      4F       1       1       2   .abs_section_4f
+     _TFLG2                                      4F       1       1       1   .abs_section_4f
      _PACTL                                      60       1       1       0   .abs_section_60
      _PAFLG                                      61       1       1       0   .abs_section_61
      _MCCTL                                      66       1       1       0   .abs_section_66
@@ -617,7 +617,7 @@ MODULE:                 -- mc9s12dg256.c.o --
      _PPSP                                      25D       1       1       0   .abs_section_25d
      _PIEP                                      25E       1       1       0   .abs_section_25e
      _PIFP                                      25F       1       1       0   .abs_section_25f
-     _PTH                                       260       1       1       4   .abs_section_260
+     _PTH                                       260       1       1       3   .abs_section_260
      _PTIH                                      261       1       1       0   .abs_section_261
      _DDRH                                      262       1       1       1   .abs_section_262
      _RDRH                                      263       1       1       0   .abs_section_263
@@ -695,7 +695,7 @@ MODULE:                 -- mc9s12dg256.c.o --
      _PARTID                                     1A       2       2       0   .abs_section_1a
      _TCNT                                       44       2       2       0   .abs_section_44
      _TC0                                        50       2       2       0   .abs_section_50
-     _TC1                                        52       2       2       3   .abs_section_52
+     _TC1                                        52       2       2       2   .abs_section_52
      _TC2                                        54       2       2       0   .abs_section_54
      _TC3                                        56       2       2       0   .abs_section_56
      _TC4                                        58       2       2       0   .abs_section_58
@@ -765,74 +765,73 @@ MODULE:                 -- Start12.c.o --
 MODULE:                 -- DADD.C.o (ansibf.lib) --
 - PROCEDURES:
      D_ADDKL                                   C015      BC     188       1   NON_BANKED  
-     _DADD                                     C0D1      11      17       6   NON_BANKED  
+     _DADD                                     C0D1      11      17       5   NON_BANKED  
 - VARIABLES:
 MODULE:                 -- DCONV.C.o (ansibf.lib) --
 - PROCEDURES:
      D_TOLONGK                                 C0E2      33      51       1   NON_BANKED  
-     D_FRLONGK                                 C115      19      25       1   NON_BANKED  
-     _DSFLOAT                                  C12E      14      20       4   NON_BANKED  
-     _DSTRUNC                                  C142      19      25       1   NON_BANKED  
-     _DUTRUNC                                  C15B       3       3       2   NON_BANKED  
-     D_PSHK_UNARY                              C15E      1E      30       1   NON_BANKED  
-     D_CLRK_UNARY                              C17C       D      13       2   NON_BANKED  
-     D_MAXK_UNARY                              C189       A      10       1   NON_BANKED  
-     D_NORMK_UNARY                             C193      5C      92       1   NON_BANKED  
+     D_FRLONGK                                 C115      19      25       2   NON_BANKED  
+     _DSFLOAT                                  C12E      14      20       2   NON_BANKED  
+     _DUFLOAT                                  C142      14      20       1   NON_BANKED  
+     _DSTRUNC                                  C156      19      25       1   NON_BANKED  
+     _DUTRUNC                                  C16F       3       3       2   NON_BANKED  
+     D_PSHK_UNARY                              C172      1E      30       2   NON_BANKED  
+     D_CLRK_UNARY                              C190       D      13       2   NON_BANKED  
+     D_MAXK_UNARY                              C19D       A      10       1   NON_BANKED  
+     D_NORMK_UNARY                             C1A7      5C      92       1   NON_BANKED  
 - VARIABLES:
 MODULE:                 -- DMUL.C.o (ansibf.lib) --
 - PROCEDURES:
-     D_DIVKL                                   C1EF      F5     245       2   NON_BANKED  
-     D_MULKL                                   C2E4      90     144       1   NON_BANKED  
-     _DMUL                                     C374      11      17       5   NON_BANKED  
-     _DDIV                                     C385      11      17       5   NON_BANKED  
+     D_DIVKL                                   C203      F5     245       2   NON_BANKED  
+     D_MULKL                                   C2F8      90     144       1   NON_BANKED  
+     _DMUL                                     C388      11      17       5   NON_BANKED  
+     _DDIV                                     C399      11      17       5   NON_BANKED  
 - VARIABLES:
 MODULE:                 -- DREGS.C.o (ansibf.lib) --
 - PROCEDURES:
-     D_PULK                                    C396      29      41       3   NON_BANKED  
-     D_PULL                                    C3BF      25      37       4   NON_BANKED  
-     D_PSHK                                    C3E4      23      35       3   NON_BANKED  
-     D_XGKL                                    C407      39      57       2   NON_BANKED  
-     D_CLRK                                    C440      13      19       3   NON_BANKED  
-     D_MAXK                                    C453       A      10       2   NON_BANKED  
-     D_NORMK                                   C45D      8F     143       4   NON_BANKED  
+     D_PULK                                    C3AA      29      41       3   NON_BANKED  
+     D_PULL                                    C3D3      25      37       4   NON_BANKED  
+     D_PSHK                                    C3F8      23      35       3   NON_BANKED  
+     D_XGKL                                    C41B      39      57       2   NON_BANKED  
+     D_CLRK                                    C454      13      19       3   NON_BANKED  
+     D_MAXK                                    C467       A      10       2   NON_BANKED  
+     D_NORMK                                   C471      8F     143       4   NON_BANKED  
 - VARIABLES:
 MODULE:                 -- rtshc12.c.o (ansibf.lib) --
 - PROCEDURES:
-     _NEG_P                                    C4EC       F      15       1   NON_BANKED  
-     _ILSEXT                                   C4FB       7       7       4   NON_BANKED  
-     _COPY                                     C502       8       8       4   NON_BANKED  
+     _NEG_P                                    C500       F      15       1   NON_BANKED  
+     _ILSEXT                                   C50F       7       7       2   NON_BANKED  
+     _COPY                                     C516       8       8       4   NON_BANKED  
 - VARIABLES:
 MODULE:                 -- VREGS.C.o (ansibf.lib) --
 - PROCEDURES:
-     L_NEGK                                    C50A       7       7       2   NON_BANKED  
-     L_PSHK                                    C511       8       8       1   NON_BANKED  
-     SL_PULK                                   C519       A      10       1   NON_BANKED  
+     L_NEGK                                    C51E       7       7       2   NON_BANKED  
+     L_PSHK                                    C525       8       8       1   NON_BANKED  
+     UL_PULK                                   C52D       3       3       1   NON_BANKED  
+     SL_PULK                                   C530       A      10       1   NON_BANKED  
 - VARIABLES:
 MODULE:                 -- scanRoom.c.o --
 - PROCEDURES:
-     scanRoom                                308039      D8     216       3   .text       
-     verticalShift                           308111      D7     215       5   .text       
-     horizontalShift                         3081E8      D7     215       5   .text       
-     initLidar                               3082BF       D      13       2   .text       
-     getDistance                             3082CC      FB     251       2   .text       
-     resetLiDAR                              3083C7      1A      26       2   .text       
-     servosInit                              3083E1      15      21       2   .text       
-     delay                                   3083F6      33      51       4   .text       
-     tovisr                                    C523      10      16       1   NON_BANKED  
+     scanRoom                                308039      CA     202       2   .text       
+     verticalShift                           308103      D7     215       5   .text       
+     horizontalShift                         3081DA      D7     215       5   .text       
+     initLidar                               3082B1       D      13       2   .text       
+     getDistance                             3082BE      AF     175       2   .text       
+     servosInit                              30836D      15      21       2   .text       
+     delay                                   308382      33      51       4   .text       
 - VARIABLES:
-     edge1                                     1108       2       2       4   .common     
-     p                                         110A       2       2       3   .common     
-     q                                         110C       2       2       3   .common     
-     overflow                                  110E       2       2       6   .common     
-     pulse_width                               1110       2       2       3   .common     
-     length                                    1112       8       8       9   .common     
-     distance                                  111A       8       8       1   .common     
-     x                                         1122       2       2       4   .common     
-     y                                         1124       2       2       4   .common     
-     points                                    1126       2       2       3   .common     
+     edge1                                     1108       2       2       2   .common     
+     pulse_width                               110A       2       2       1   .common     
+     length                                    110C       8       8       5   .common     
+     distance                                  1114       8       8       1   .common     
+     x                                         111C       2       2       4   .common     
+     y                                         111E       2       2       4   .common     
+     points                                    1120       2       2       3   .common     
+     p                                         1122       2       2       3   .common     
+     q                                         1124       2       2       3   .common     
 MODULE:                 -- isr_vectors.c.o --
 - PROCEDURES:
-     UnimplementedISR                          C533       2       2      62   NON_BANKED  
+     UnimplementedISR                          C53A       2       2      63   NON_BANKED  
 - VARIABLES:
      _vect                                     FF80      7E     126       0   .abs_section_ff80
 
@@ -844,12 +843,12 @@ MODULE STATISTIC
   main.c.o                                     8     16      0
   Start12.c.o                                  0     52      0
   DADD.C.o (ansibf.lib)                        0    205      0
-  DCONV.C.o (ansibf.lib)                       0    269      0
+  DCONV.C.o (ansibf.lib)                       0    289      0
   DMUL.C.o (ansibf.lib)                        0    423      0
   DREGS.C.o (ansibf.lib)                       0    342      0
   rtshc12.c.o (ansibf.lib)                     0     30      0
-  VREGS.C.o (ansibf.lib)                       0     25      0
-  scanRoom.c.o                                32   1024      0
+  VREGS.C.o (ansibf.lib)                       0     28      0
+  scanRoom.c.o                                30    892      0
   isr_vectors.c.o                              0      2    126
   other                                      256     12      2
 
@@ -858,14 +857,14 @@ SECTION USE IN OBJECT-ALLOCATION SECTION
 ---------------------------------------------------------------------------------------------
 SECTION: ".text"
   main Init scanRoom verticalShift horizontalShift initLidar getDistance 
-  resetLiDAR servosInit delay 
+  servosInit delay 
 SECTION: ".init"
   _Startup 
 SECTION: "NON_BANKED"
-  D_ADDKL _DADD D_TOLONGK D_FRLONGK _DSFLOAT _DSTRUNC _DUTRUNC D_PSHK_UNARY 
-  D_CLRK_UNARY D_MAXK_UNARY D_NORMK_UNARY D_DIVKL D_MULKL _DMUL _DDIV D_PULK 
-  D_PULL D_PSHK D_XGKL D_CLRK D_MAXK D_NORMK _NEG_P _ILSEXT _COPY L_NEGK L_PSHK 
-  SL_PULK tovisr UnimplementedISR 
+  D_ADDKL _DADD D_TOLONGK D_FRLONGK _DSFLOAT _DUFLOAT _DSTRUNC _DUTRUNC 
+  D_PSHK_UNARY D_CLRK_UNARY D_MAXK_UNARY D_NORMK_UNARY D_DIVKL D_MULKL _DMUL 
+  _DDIV D_PULK D_PULL D_PSHK D_XGKL D_CLRK D_MAXK D_NORMK _NEG_P _ILSEXT _COPY 
+  L_NEGK L_PSHK UL_PULK SL_PULK UnimplementedISR 
 SECTION: ".abs_section_8"
   _PORTE 
 SECTION: ".abs_section_9"
@@ -1549,7 +1548,7 @@ SECTION: ".abs_section_2ae"
 SECTION: ".abs_section_2be"
   _CAN4TXTSR 
 SECTION: ".common"
-  data edge1 p q overflow pulse_width length distance x y points 
+  data edge1 pulse_width length distance x y points p q 
 SECTION: ".abs_section_ff80"
   _vect 
 
@@ -1609,11 +1608,11 @@ OBJECT LIST SORTED BY ADDRESS
      _TCTL3                                      4A       1       1       0   .abs_section_4a
      _TCTL4                                      4B       1       1       2   .abs_section_4b
      _TIE                                        4C       1       1       0   .abs_section_4c
-     _TSCR2                                      4D       1       1       2   .abs_section_4d
+     _TSCR2                                      4D       1       1       1   .abs_section_4d
      _TFLG1                                      4E       1       1       3   .abs_section_4e
-     _TFLG2                                      4F       1       1       2   .abs_section_4f
+     _TFLG2                                      4F       1       1       1   .abs_section_4f
      _TC0                                        50       2       2       0   .abs_section_50
-     _TC1                                        52       2       2       3   .abs_section_52
+     _TC1                                        52       2       2       2   .abs_section_52
      _TC2                                        54       2       2       0   .abs_section_54
      _TC3                                        56       2       2       0   .abs_section_56
      _TC4                                        58       2       2       0   .abs_section_58
@@ -1823,7 +1822,7 @@ OBJECT LIST SORTED BY ADDRESS
      _PPSP                                      25D       1       1       0   .abs_section_25d
      _PIEP                                      25E       1       1       0   .abs_section_25e
      _PIFP                                      25F       1       1       0   .abs_section_25f
-     _PTH                                       260       1       1       4   .abs_section_260
+     _PTH                                       260       1       1       3   .abs_section_260
      _PTIH                                      261       1       1       0   .abs_section_261
      _DDRH                                      262       1       1       1   .abs_section_262
      _RDRH                                      263       1       1       0   .abs_section_263
@@ -1899,58 +1898,57 @@ OBJECT LIST SORTED BY ADDRESS
      _CAN4TXTBPR                                2BD       1       1       0   .abs_section_2bd
      _CAN4TXTSR                                 2BE       2       2       0   .abs_section_2be
      data                                      1100       8       8       1   .common     
-     edge1                                     1108       2       2       4   .common     
-     p                                         110A       2       2       3   .common     
-     q                                         110C       2       2       3   .common     
-     overflow                                  110E       2       2       6   .common     
-     pulse_width                               1110       2       2       3   .common     
-     length                                    1112       8       8       9   .common     
-     distance                                  111A       8       8       1   .common     
-     x                                         1122       2       2       4   .common     
-     y                                         1124       2       2       4   .common     
-     points                                    1126       2       2       3   .common     
+     edge1                                     1108       2       2       2   .common     
+     pulse_width                               110A       2       2       1   .common     
+     length                                    110C       8       8       5   .common     
+     distance                                  1114       8       8       1   .common     
+     x                                         111C       2       2       4   .common     
+     y                                         111E       2       2       4   .common     
+     points                                    1120       2       2       3   .common     
+     p                                         1122       2       2       3   .common     
+     q                                         1124       2       2       3   .common     
      _Startup                                  C000       B      11       0   .init       
      D_ADDKL                                   C015      BC     188       1   NON_BANKED  
-     _DADD                                     C0D1      11      17       6   NON_BANKED  
+     _DADD                                     C0D1      11      17       5   NON_BANKED  
      D_TOLONGK                                 C0E2      33      51       1   NON_BANKED  
-     D_FRLONGK                                 C115      19      25       1   NON_BANKED  
-     _DSFLOAT                                  C12E      14      20       4   NON_BANKED  
-     _DSTRUNC                                  C142      19      25       1   NON_BANKED  
-     _DUTRUNC                                  C15B       3       3       2   NON_BANKED  
-     D_PSHK_UNARY                              C15E      1E      30       1   NON_BANKED  
-     D_CLRK_UNARY                              C17C       D      13       2   NON_BANKED  
-     D_MAXK_UNARY                              C189       A      10       1   NON_BANKED  
-     D_NORMK_UNARY                             C193      5C      92       1   NON_BANKED  
-     D_DIVKL                                   C1EF      F5     245       2   NON_BANKED  
-     D_MULKL                                   C2E4      90     144       1   NON_BANKED  
-     _DMUL                                     C374      11      17       5   NON_BANKED  
-     _DDIV                                     C385      11      17       5   NON_BANKED  
-     D_PULK                                    C396      29      41       3   NON_BANKED  
-     D_PULL                                    C3BF      25      37       4   NON_BANKED  
-     D_PSHK                                    C3E4      23      35       3   NON_BANKED  
-     D_XGKL                                    C407      39      57       2   NON_BANKED  
-     D_CLRK                                    C440      13      19       3   NON_BANKED  
-     D_MAXK                                    C453       A      10       2   NON_BANKED  
-     D_NORMK                                   C45D      8F     143       4   NON_BANKED  
-     _NEG_P                                    C4EC       F      15       1   NON_BANKED  
-     _ILSEXT                                   C4FB       7       7       4   NON_BANKED  
-     _COPY                                     C502       8       8       4   NON_BANKED  
-     L_NEGK                                    C50A       7       7       2   NON_BANKED  
-     L_PSHK                                    C511       8       8       1   NON_BANKED  
-     SL_PULK                                   C519       A      10       1   NON_BANKED  
-     tovisr                                    C523      10      16       1   NON_BANKED  
-     UnimplementedISR                          C533       2       2      62   NON_BANKED  
+     D_FRLONGK                                 C115      19      25       2   NON_BANKED  
+     _DSFLOAT                                  C12E      14      20       2   NON_BANKED  
+     _DUFLOAT                                  C142      14      20       1   NON_BANKED  
+     _DSTRUNC                                  C156      19      25       1   NON_BANKED  
+     _DUTRUNC                                  C16F       3       3       2   NON_BANKED  
+     D_PSHK_UNARY                              C172      1E      30       2   NON_BANKED  
+     D_CLRK_UNARY                              C190       D      13       2   NON_BANKED  
+     D_MAXK_UNARY                              C19D       A      10       1   NON_BANKED  
+     D_NORMK_UNARY                             C1A7      5C      92       1   NON_BANKED  
+     D_DIVKL                                   C203      F5     245       2   NON_BANKED  
+     D_MULKL                                   C2F8      90     144       1   NON_BANKED  
+     _DMUL                                     C388      11      17       5   NON_BANKED  
+     _DDIV                                     C399      11      17       5   NON_BANKED  
+     D_PULK                                    C3AA      29      41       3   NON_BANKED  
+     D_PULL                                    C3D3      25      37       4   NON_BANKED  
+     D_PSHK                                    C3F8      23      35       3   NON_BANKED  
+     D_XGKL                                    C41B      39      57       2   NON_BANKED  
+     D_CLRK                                    C454      13      19       3   NON_BANKED  
+     D_MAXK                                    C467       A      10       2   NON_BANKED  
+     D_NORMK                                   C471      8F     143       4   NON_BANKED  
+     _NEG_P                                    C500       F      15       1   NON_BANKED  
+     _ILSEXT                                   C50F       7       7       2   NON_BANKED  
+     _COPY                                     C516       8       8       4   NON_BANKED  
+     L_NEGK                                    C51E       7       7       2   NON_BANKED  
+     L_PSHK                                    C525       8       8       1   NON_BANKED  
+     UL_PULK                                   C52D       3       3       1   NON_BANKED  
+     SL_PULK                                   C530       A      10       1   NON_BANKED  
+     UnimplementedISR                          C53A       2       2      63   NON_BANKED  
      _vect                                     FF80      7E     126       0   .abs_section_ff80
      main                                    308000      10      16       2   .text       
      Init                                    308010      29      41       2   .text       
-     scanRoom                                308039      D8     216       3   .text       
-     verticalShift                           308111      D7     215       5   .text       
-     horizontalShift                         3081E8      D7     215       5   .text       
-     initLidar                               3082BF       D      13       2   .text       
-     getDistance                             3082CC      FB     251       2   .text       
-     resetLiDAR                              3083C7      1A      26       2   .text       
-     servosInit                              3083E1      15      21       2   .text       
-     delay                                   3083F6      33      51       4   .text       
+     scanRoom                                308039      CA     202       2   .text       
+     verticalShift                           308103      D7     215       5   .text       
+     horizontalShift                         3081DA      D7     215       5   .text       
+     initLidar                               3082B1       D      13       2   .text       
+     getDistance                             3082BE      AF     175       2   .text       
+     servosInit                              30836D      15      21       2   .text       
+     delay                                   308382      33      51       4   .text       
 
 *********************************************************************************************
 UNUSED-OBJECTS SECTION
@@ -1958,8 +1956,6 @@ UNUSED-OBJECTS SECTION
 NOT USED PROCEDURES
 DADD.C.o (ansibf.lib):
   _DSUB _DINC _DDEC _DNEG _DABS 
-DCONV.C.o (ansibf.lib):
-  _DUFLOAT 
 DREGS.C.o (ansibf.lib):
   D_STAL D_TLK D_TKL D_CLRL 
 rtshc12.c.o (ansibf.lib):
@@ -1968,8 +1964,6 @@ rtshc12.c.o (ansibf.lib):
   _LDEC _LMUL _LMULU16x32 _LMULS16x32 _lDivMod _LDIVU _LDIVS _LMODU _LMODS 
   _CASE_DIRECT _CASE_DIRECT_BYTE _CASE_CHECKED _CASE_CHECKED_BYTE _CASE_SEARCH 
   _CASE_SEARCH_BYTE _CASE_SEARCH_8 _CASE_SEARCH_8_BYTE _FCALL _FPCMP 
-VREGS.C.o (ansibf.lib):
-  UL_PULK 
 NOT USED VARIABLES
 rtshc12.c.o (ansibf.lib):
   _PowOfTwo_8 _PowOfTwo_16 _PowOfTwo_32 errno 
@@ -1977,7 +1971,7 @@ rtshc12.c.o (ansibf.lib):
 *********************************************************************************************
 COPYDOWN SECTION
 ---------------------------------------------------------------------------------------------
-------- ROM-ADDRESS: 0xC535 ---- SIZE       2 ---
+------- ROM-ADDRESS: 0xC53C ---- SIZE       2 ---
 Filling bytes inserted
  0000
 
@@ -1989,6 +1983,7 @@ D_ADDKL                   USES D_XGKL D_NORMK
 _DADD                     USES D_PULK D_PULL D_ADDKL D_PSHK 
 D_FRLONGK                 USES D_NORMK_UNARY 
 _DSFLOAT                  USES SL_PULK D_FRLONGK D_PSHK_UNARY 
+_DUFLOAT                  USES UL_PULK D_FRLONGK D_PSHK_UNARY 
 _DSTRUNC                  USES D_PULL D_TOLONGK L_PSHK 
 _DUTRUNC                  USES _DSTRUNC 
 D_MAXK_UNARY              USES D_CLRK_UNARY 
@@ -2002,22 +1997,20 @@ D_NORMK                   USES D_CLRK D_MAXK
 L_NEGK                    USES _NEG_P 
 L_PSHK                    USES L_NEGK 
 SL_PULK                   USES L_NEGK 
-tovisr                    USES _TFLG2 overflow _PTH 
-_vect                     USES UnimplementedISR tovisr 
+_vect                     USES UnimplementedISR 
 main                      USES data scanRoom 
 Init                      USES _startupData 
 scanRoom                  USES initLidar servosInit points x _ILSEXT _DSFLOAT 
-                                scanRoom verticalShift y horizontalShift distance 
-                                getDistance resetLiDAR _PWME _COPY _DMUL 
+                                verticalShift y horizontalShift distance getDistance _PWME 
+                                _COPY _DMUL 
 verticalShift             USES verticalShift _DADD _DDIV _DMUL _PWMPER45 
                                 _DUTRUNC _PWMDTY45 _PWME delay _COPY 
 horizontalShift           USES horizontalShift _DADD _DDIV _DMUL _PWMPER67 
                                 _DUTRUNC _PWMDTY67 _PWME delay _COPY 
 initLidar                 USES _DDRT _DDRH _PTH 
 getDistance               USES _TSCR1 _TSCR2 _TIOS _DLYCT _ICOVW _ICSYS _TCTL4 
-                                _TFLG1 _PTH _TFLG2 _TC1 edge1 pulse_width overflow 
-                                _ILSEXT _DSFLOAT _DADD _DDIV length _COPY 
-resetLiDAR                USES overflow pulse_width length edge1 _TSCR1 
+                                _TFLG1 _PTH _TFLG2 _TC1 edge1 pulse_width _DUFLOAT 
+                                _DDIV length _COPY _DADD 
 servosInit                USES _DDRP _PWMCLK _PWMPOL _PWMPRCLK _PWMCTL _PWMCAE 
 delay                     USES q p 
 
@@ -2138,18 +2131,20 @@ DEPENDENCY TREE
  |     |     
  |     +- getDistance         
  |     |  | 
- |     |  +- _ILSEXT              (see above)
- |     |  |  
- |     |  +- _DSFLOAT             (see above)
- |     |  |  
- |     |  +- _DADD                (see above)
- |     |  |  
+ |     |  +- _DUFLOAT            
+ |     |  |  | 
+ |     |  |  +- UL_PULK             
+ |     |  |  |    
+ |     |  |  +- D_FRLONGK            (see above)
+ |     |  |  |  
+ |     |  |  +- D_PSHK_UNARY         (see above)
+ |     |  |     
  |     |  +- _DDIV                (see above)
  |     |  |  
  |     |  +- _COPY                (see above)
+ |     |  |  
+ |     |  +- _DADD                (see above)
  |     |     
- |     +- resetLiDAR          
- |     |    
  |     +- _COPY                (see above)
  |     |  
  |     +- _DMUL                (see above)
@@ -2163,8 +2158,6 @@ DEPENDENCY TREE
  _vect               
  | 
  +- UnimplementedISR    
- |    
- +- tovisr              
       
 *********************************************************************************************
 STATISTIC SECTION
@@ -2172,6 +2165,6 @@ STATISTIC SECTION
 
 ExeFile:
 --------
-Number of blocks to be downloaded: 6
-Total size of all blocks to be downloaded: 2528
+Number of blocks to be downloaded: 7
+Total size of all blocks to be downloaded: 2419
 
