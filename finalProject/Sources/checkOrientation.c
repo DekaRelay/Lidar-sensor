@@ -5,18 +5,19 @@
 #include <stdio.h>
 #include <math.h>
 
-//#include "pll.h"
+#include "pll.h"
 #include "simple_serial.h"
 #include "l3g4200d.h"
 
 
 float roll, pitch;
-int maxAngle, minAngle;
+int maxAngle, minAngle, flag;
 AccelRaw read_accel;
 AccelScaled scaled_accel;
 
 int error_code;
 unsigned char buffer[64];
+
 
 
 
@@ -41,53 +42,59 @@ void checkOrientation(void) {
   } else {
     sprintf(buffer, "ERROR %d");
     SCI1_OutString(buffer);
-  }
+  }  
 
 	EnableInterrupts;
 
-  for(;;) {
+  flag = 0; 
+  while (flag = 0) {
 
-    // read the raw accel values
-    getRawDataAccel(&read_accel);
 
-    // convert the acceleration to a scaled value
-    convertUnits(&read_accel, &scaled_accel);
+    
+      // read the raw accel values
+      getRawDataAccel(&read_accel);
 
-    //calculate pitch and roll
-    pitch = 57.3 * atan2(scaled_accel.x, sqrt(scaled_accel.y*scaled_accel.y + scaled_accel.z*scaled_accel.z));
-    roll = 57.3 * atan2(scaled_accel.y, sqrt(scaled_accel.x*scaled_accel.x + scaled_accel.z*scaled_accel.z));
+      // convert the acceleration to a scaled value
+      convertUnits(&read_accel, &scaled_accel);
 
-    //calculate the specific shift angle (might need work and further testing)
-    pitch = 90 - pitch;
-    roll = 90 + roll;
+      //calculate pitch and roll
+      pitch = 57.3 * atan2(scaled_accel.x, sqrt(scaled_accel.y*scaled_accel.y + scaled_accel.z*scaled_accel.z));
+      roll = 57.3 * atan2(scaled_accel.y, sqrt(scaled_accel.x*scaled_accel.x + scaled_accel.z*scaled_accel.z));
 
-    //change the horizontalshift and verticalshift depending on angle
+      //calculate the specific shift angle (might need work and further testing)
+      pitch = 90 - pitch;
+      roll = 90 + roll;
 
-    //if(pitch > maxAngle){
-    //  horizontalShift(maxAngle);
-    //}else if(pitch < minAngle){
-    //  horizontalShift(minAngle);
-    //}else{
-    //  horizontalShift(pitch);
-    //}
+      //change the horizontalshift and verticalshift depending on angle
 
-    //if(roll > maxAngle){
-    //  verticalShift(maxAngle);
-    //}else if(roll < minAngle){
-    //  verticalShift(minAngle);
-    //}else{
-    //  verticalShift(roll);
-    //}
+      if(pitch > maxAngle){
+        horizontalShift(maxAngle);
+      }else if(pitch < minAngle){
+        horizontalShift(minAngle);
+      }else{
+        horizontalShift(pitch);
+      }
 
-    // format the string of the sensor data to go the the serial
-    sprintf(buffer, "%.2f, %.2f, %.2f, %.2f, %.2f \r\n", scaled_accel.x, scaled_accel.y, scaled_accel.z, pitch, roll);
+      if(roll > maxAngle){
+        verticalShift(maxAngle);
+      }else if(roll < minAngle){
+        verticalShift(minAngle);
+      }else{
+        verticalShift(roll);
+      } 
+      
+      if (((pitch < maxAngle) &&  (pitch > minAngle)) || ((roll < maxAngle) && (roll > maxAngle))) {
+        flag = 1; 
+      }
+
+     //format the string of the sensor data to go the the serial
+     sprintf(buffer, "%.2f, %.2f, %.2f, %.2f, %.2f \r\n", scaled_accel.x, scaled_accel.y, scaled_accel.z, pitch, roll);
 
 
     // output the data to serial
     SCI1_OutString(buffer);
+  
 
-    //_FEED_COP(); /* feeds the dog */
-  } /* loop forever */
+  }
 
-  /* please make sure that you never leave main */
 }

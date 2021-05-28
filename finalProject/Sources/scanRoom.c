@@ -12,7 +12,7 @@ void movementdelay(void);
 
 //Initialisation of variables
 unsigned int edge1, pulse_width; 
-double length, distance;                      //Stores the size of the pulse in milliseconds
+double length, distance;                      
 int x, y, points, p, q;
 
 double scanRoom(void){
@@ -24,11 +24,11 @@ double scanRoom(void){
    //Determine the data intervals position the LiDAR for data points
    double interval = (motorMax - motorMin)/8;
 
-   //Initialise LiDAR communication
+   //Initialise LiDAR communication and servos
    initLidar();
    servosInit(); 
 
-   //Initialise loop variables and dimension of LiDAR position matrix
+   //Initialise number of axis points for the loop to stop at 
 
    points = 8;
 
@@ -36,6 +36,9 @@ double scanRoom(void){
    for (x = points; x >= 0; --x){
       //Position the servo
       verticalShift(x * interval);
+      
+      // Orientate the gyro 
+     checkOrientation(); 
 
       //Loop through horizontal positions
       for (y=1; y<= points; ++y){
@@ -49,6 +52,7 @@ double scanRoom(void){
       }
    }
    
+   //Set the final position of the LiDAR to centre and turn off signals 
    horizontalShift(90); 
    verticalShift(90); 
    PWME_PWME5 = 0;
@@ -74,7 +78,7 @@ void verticalShift(double vertical){
   PWMDTY45 = ON;                 //  Duty set according to input angle
 
   PWME_PWME5 = 1;                //  PWM5 is enabled
-  movementdelay(); 
+  movementdelay();               //  Delay to allow servo to complete movement 
 }
 
 //Function to enable movement in horizontal axis
@@ -94,7 +98,7 @@ void horizontalShift(double horizontal){
   PWMDTY67 = ON;                //  Duty set according to input angle
 
   PWME_PWME7 = 1 ;              //  PWM7 is enabled
-  movementdelay(); 
+  movementdelay();              //  Delay to allow servo to complete movement 
 
 }
 
@@ -128,7 +132,7 @@ double getDistance(void){
  edge1 = TC1;                   //  Store the first edge time in edge1
  TCTL4 = 0x08;                  //  Capture the falling edge
 
- while (!(TFLG1_C1F));
+ while (!(TFLG1_C1F));          //  Wait fro faling edge
 
  pulse_width = TC1 - edge1;     //  Calculate the pulse width as the difference of the edges
 
@@ -151,7 +155,7 @@ void servosInit(void){
 }
 
 
-void movementdelay(void){
+void movementdelay(void){              // Delay to allow servo to complete action 
      for (q = 0; q <= 5; q++){
       for (p = 0; p <= 30000; p++){
         asm{
