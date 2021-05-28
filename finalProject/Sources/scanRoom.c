@@ -8,7 +8,7 @@ void verticalShift(double);                   //Controls vertical movement
 void initLidar(void);                         //Initialises LiDAR communication
 double getDistance(void);                     //Obtains the distance info from LiDAR
 void servosInit(void);
-void delay(void); 
+void movementdelay(void); 
 
 //Initialisation of variables
 unsigned int edge1, pulse_width; 
@@ -74,7 +74,7 @@ void verticalShift(double vertical){
   PWMDTY45 = ON;                 //  Duty set according to input angle
 
   PWME_PWME5 = 1;                //  PWM5 is enabled
-  delay(); 
+  movementdelay(); 
 }
 
 //Function to enable movement in horizontal axis
@@ -94,7 +94,7 @@ void horizontalShift(double horizontal){
   PWMDTY67 = ON;                //  Duty set according to input angle
 
   PWME_PWME7 = 1 ;              //  PWM7 is enabled
-  delay(); 
+  movementdelay(); 
 
 }
 
@@ -151,7 +151,7 @@ void servosInit(void){
 }
 
 
-void delay(void){
+void movementdelay(void){
      for (q = 0; q <= 5; q++){
       for (p = 0; p <= 30000; p++){
         asm{
