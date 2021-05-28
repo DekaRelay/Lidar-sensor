@@ -8,10 +8,11 @@
 #include "pll.h"
 #include "simple_serial.h"
 #include "l3g4200d.h"
+#include  "functions.h"
 
 
 float roll, pitch;
-int maxAngle, minAngle, flag;
+int maxAnglei, minAnglei, maxAnglej, minAnglej, flag;
 AccelRaw read_accel;
 AccelScaled scaled_accel;
 
@@ -21,11 +22,14 @@ unsigned char buffer[64];
 
 
 
-void checkOrientation(void) {
+void checkOrientation(int i, int j) {
 
   //minmax gyro angles
-  maxAngle = 110;
-  minAngle = 70;
+  maxAnglei = i + 10;
+  minAnglei = i - 10;
+  
+  maxAnglej = j + 10; 
+  minAnglej = j - 10; 
 
   error_code = NO_ERROR;
 
@@ -47,7 +51,7 @@ void checkOrientation(void) {
 	EnableInterrupts;
 
   flag = 0; 
-  while (flag = 0) {
+  while (flag == 0) {
 
 
     
@@ -62,29 +66,13 @@ void checkOrientation(void) {
       roll = 57.3 * atan2(scaled_accel.y, sqrt(scaled_accel.x*scaled_accel.x + scaled_accel.z*scaled_accel.z));
 
       //calculate the specific shift angle (might need work and further testing)
-      pitch = 90 - pitch;
-      roll = 90 + roll;
-
-      //change the horizontalshift and verticalshift depending on angle
-
-      if(pitch > maxAngle){
-        horizontalShift(maxAngle);
-      }else if(pitch < minAngle){
-        horizontalShift(minAngle);
-      }else{
-        horizontalShift(pitch);
-      }
-
-      if(roll > maxAngle){
-        verticalShift(maxAngle);
-      }else if(roll < minAngle){
-        verticalShift(minAngle);
-      }else{
-        verticalShift(roll);
-      } 
+      pitch = i - pitch;
+      roll = j + roll;
       
-      if (((pitch < maxAngle) &&  (pitch > minAngle)) || ((roll < maxAngle) && (roll > maxAngle))) {
-        flag = 1; 
+      if (((pitch < maxAnglei) &&  (pitch > minAnglei)) || ((roll < maxAnglei) && (roll > minAnglei))) {
+            if (((pitch < maxAnglej) &&  (pitch > minAnglej)) || ((roll < maxAnglej) && (roll > minAnglej))) {
+              flag = 1;
+            }
       }
 
      //format the string of the sensor data to go the the serial

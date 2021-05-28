@@ -3,7 +3,9 @@
 
 //Initialise module functions here
 double scanRoom (void); 
-void checkOrientation(void); 
+void checkOrientation(int,int);
+void horizontalShift(double); 
+void verticalShift(double);  
 
 
 

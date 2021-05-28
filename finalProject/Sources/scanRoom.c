@@ -1,6 +1,7 @@
 #include <hidef.h>      /* common defines and macros */
 #include "derivative.h"      /* derivative-specific definitions */
 #include "interrupts.h"     //Interrupt vector header
+#include "functions.h"
 
 //Initialisation of functions
 void horizontalShift(double);                 //Controls horizontal movement
@@ -36,12 +37,11 @@ double scanRoom(void){
    for (x = points; x >= 0; --x){
       //Position the servo
       verticalShift(x * interval);
-      
-      // Orientate the gyro 
-     checkOrientation(); 
 
       //Loop through horizontal positions
       for (y=1; y<= points; ++y){
+        //Orientate LiDAR
+        checkOrientation(x, y); 
 
         //Position the servo horizontally
         horizontalShift(y * interval);
