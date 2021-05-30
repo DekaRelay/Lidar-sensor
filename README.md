@@ -59,4 +59,5 @@ Pending writing of test module
 ### Testing Plan & Procedure
 
 ## Display of Data as a Python Image
+In this part, the scan image of the room will be present as a 8x8 heatmap.
 ### Testing Plan & Procedure
