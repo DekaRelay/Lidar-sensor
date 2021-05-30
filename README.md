@@ -59,5 +59,14 @@ Pending writing of test module
 ### Testing Plan & Procedure
 
 ## Display of Data as a Python Image
-In this part, the scan image of the room will be present as a 8x8 heatmap.
+In this part, the scan image of the room will be present as a 8x8 heatmap (64 pixel). The degree of 
+heat will be shown by gray. Each pixel of the image represents the distance between the Lidar to the 
+obstacles (usually the wall). So that the heatmap can shows the image of a rough room outline drawing.
+
+Using a infinite loop in the polt model. When the data received from the serial port is keeping changing, 
+which means the machine is scaning the code continuously, the hap shown by python will also follows that.
 ### Testing Plan & Procedure
+Generate some random 8x8 matrix data using numpy and random libraries. Input these data into the plot
+model to show the concept of the heatmap.
+
+If it works and always changing each of the pixel. The polt model could pass the test.
