@@ -67,6 +67,6 @@ Using a infinite loop in the polt model. When the data received from the serial 
 which means the machine is scaning the code continuously, the hap shown by python will also follows that.
 ### Testing Plan & Procedure
 1. Generate some random 8x8 matrix data using numpy and random libraries.
-2. Input these data into the plot model。
+2. Input these data into the plot model.
 
 If it shows the reasonable heatmap and always changing each of the pixel. The polt model could pass the test.
