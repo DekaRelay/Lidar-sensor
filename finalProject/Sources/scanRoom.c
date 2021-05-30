@@ -9,14 +9,51 @@ void verticalShift(double);                   //Controls vertical movement
 void initLidar(void);                         //Initialises LiDAR communication
 double getDistance(void);                     //Obtains the distance info from LiDAR
 void servosInit(void);
-void movementdelay(void); 
+void movementdelay(void);
+void sendSerial(char* inStr);                     // Send given string over serial port 1 
 
 //Initialisation of variables
 unsigned int edge1, pulse_width; 
 double length, distance;                      
-int x, y, points, p, q;
+int x, y, points, p, q, tdreResult, charData, index;
 
-double scanRoom(void){
+char convertor[10]; // Hold floating point to string conversion
+
+void sendSerial(char* inStr) 
+{
+
+
+  // Function sends string data over serial port 1
+  index = 0;
+  while (1) 
+  {
+    charData = inStr[index];
+    tdreResult = SCI1SR1 & 128;
+    if (tdreResult != 0) 
+    {
+      if (charData == '\0') // Once end of string reached 
+      {
+        SCI1DRH = 0;
+        SCI1DRL = '|'; // Indication of speration 
+        break; 
+      }
+      
+      SCI1DRH = 0;
+      SCI1DRL = charData; // Send data
+      index = index + 1;
+    }
+      
+  }
+}
+
+void scanInit(void) 
+{
+  //Initialise LiDAR communication and servos
+   initLidar();
+   servosInit();
+}
+
+void scanRoom(void){
 
     // Initialise the operation range for the servos in degrees
    int motorMax = 160;
@@ -24,10 +61,6 @@ double scanRoom(void){
 
    //Determine the data intervals position the LiDAR for data points
    double interval = (motorMax - motorMin)/8;
-
-   //Initialise LiDAR communication and servos
-   initLidar();
-   servosInit(); 
 
    //Initialise number of axis points for the loop to stop at 
 
@@ -48,9 +81,15 @@ double scanRoom(void){
 
         //Obtain the distance from the LiDAR
         distance = getDistance();
+        
+        sprintf(convertor, "%.2f", distance); // convert double into string
+        sendSerial(convertor);
 
       }
+      sendSerial("|"); // Double pipe indicates new row
+      
    }
+   sendSerial("|"); // Triple pipe indicates end of matrix transmission
    
    //Set the final position of the LiDAR to centre and turn off signals 
    horizontalShift(90); 

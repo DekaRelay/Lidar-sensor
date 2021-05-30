@@ -5,7 +5,9 @@
 double scanRoom (void); 
 void checkOrientation(int,int);
 void horizontalShift(double); 
-void verticalShift(double);  
+void verticalShift(double);
+void movementDelay(void);
+void scanInit(void);  
 
 
 
