@@ -24,11 +24,11 @@ unsigned char buffer[64];
 void checkOrientation(int i, int j) {
 
   //minmax gyro angles
-  maxAnglei = i + 10;
-  minAnglei = i - 10;
+  maxAnglei = i + 20;
+  minAnglei = i - 20;
   
-  maxAnglej = j + 10; 
-  minAnglej = j - 10; 
+  maxAnglej = j + 20; 
+  minAnglej = j - 20; 
 
   error_code = NO_ERROR;
 

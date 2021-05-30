@@ -1,8 +1,6 @@
 #include <hidef.h>      /* common defines and macros */
 #include "derivative.h"      /* derivative-specific definitions */
-#include "structs.h"
 #include "functions.h"
-#include "interrupts.h"
 
 //Table variable which will contain vector 
 double data;

@@ -66,8 +66,6 @@ test the performance of each of the components:
      axis.
   5. Write the expected angle in degrees as an input to the function and run the
      code:
-      int angle;
-
       servosInit();
       verticalShift(angle) or horizontalShift(angle);
 
@@ -75,32 +73,23 @@ test the performance of each of the components:
      the anticipated position specified in the function call.
 
   Testing the LiDAR Scanner:
+  Testing the LiDAR consits of the test function "testLidar()", this function
+  initialises both the LiDAR and servomotors. It sets the LiDAR at a default position,
+  (90, 90), and then returns a distance value to be compared to an expected measurement.
+  The method is as follows:
   1. Connect the PTU and HCS-12 Board
-  2. Initialise the LiDAR and servomotors using the functions initLidar() and
-     servosIniti().
-  3. Set the position of the servomotors to a flat, default position to ensure
-     angles do not influence the measurement. This is achieved by the following
-     lines:
-     horizontalShift(90);
-     verticalShift(90);
-  4. Place a black sheet a known distance away from the LiDAR component.
-  5. Within a continuous loop to check that distance can be measured continuously,
-     call the getDistance() function to measure the distance of the sheet from the
-     LiDAR and store the output in a variable "(double) distance":
-
-        double distance;
-        servosInit();
-        horizontalShift(90);
-        verticalShift(90);
-
+  2. Place a black sheet a known distance away from the LiDAR component.
+  3. Within a loop, call the testLidar() function to measure the distance of the
+     sheet from the LiDAR and store the output in a variable "(double) testValue":
+        double testValue;
         while (1){
-          distance  = getDistance();
+          testValue  = testLidar();
         }
-    6. Run the above code and set a breakpoint at the getDistance function call.
-    7. Observe the distance value (m) returned to the distance variable in memory
-       and compare to the measured distance of the black sheet.
-    8. Continue running the code to check that consistent measurements are taken
-       and the LiDAR can operate correctly when in a loop.
+    4. Run the above code and set a breakpoint at the getDistance function call.
+    5. Observe the distance value (in meters) returned to the distance variable
+       in memory and compare to the measured distance of the black sheet.
+    6. Continue running the code to check that consistent measurements are produced
+       when operating within a loop.
 
 ## Orientation of PTU Module during scans  
 The Orientation of the PTU Module is done by initialising the IIC sensor. The main
