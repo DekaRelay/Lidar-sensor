@@ -56,7 +56,18 @@ Pending writing of test module
 ### Testing Plan & Procedure
 
 ## Serialisation of Output Data
+One scan of a room involves positioning PTU at chosen 64 different poisitons by adjusting horizontal and vertical angles. At each of these points, lidar sensor gives a distance measurement. 64 of these points is used to create a 8x8 matrix to give a spatial representation of the room. The scanRoom() function creates one scan of the room as described, during the scan each data point is sent via serial port in this format: 
+<br /> <br />
+A|B||C|D||| 
+<br /> <br />
+A,B,C,D represent floating point numbers representing distance measurement from lidar sensor. A singular pipe symbol (|) is used to seperate the numerical values, two pipe symbols in a row indicate new row in matrix, and finally three pipes in a row indicate end of transmission for this particular scan. The above serial data represents matrix: 
+<br /> <br />
+\[\[A,B\],\[C,D\]\] 
+<br /> <br />
+
+This format for serial data transmission was to allow flexibility in code for different resolutions and aspect rations of the spatial scan of room, not just an 8x8 grid. The serial data is sent over via SCI1 port. scanRoom() function is continually called to create continuous scan of room.
 ### Testing Plan & Procedure
+A premade array is created consisting of floating point values that represent lidar measurements. The sendSerial() command is used to send the serial data over SCI1 port, and using a virtual terminal we can check that whole data was sent correctly.
 
 ## Display of Data as a Python Image
 In this part, the scan image of the room will be present as a 8x8 heatmap (64 pixel). The degree of 
