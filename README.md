@@ -66,7 +66,7 @@ obstacles (usually the wall). So that the heatmap can shows the image of a rough
 Using a infinite loop in the polt model. When the data received from the serial port is keeping changing, 
 which means the machine is scaning the code continuously, the hap shown by python will also follows that.
 ### Testing Plan & Procedure
-Generate some random 8x8 matrix data using numpy and random libraries. Input these data into the plot
-model to show the concept of the heatmap.
+1. Generate some random 8x8 matrix data using numpy and random libraries.
+2. Input these data into the plot model。
 
-If it works and always changing each of the pixel. The polt model could pass the test.
+If it shows the reasonable heatmap and always changing each of the pixel. The polt model could pass the test.
