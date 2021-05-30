@@ -2,11 +2,11 @@
 #define    FUNCTIONS_HEADER
 
 //Initialise module functions here
-double scanRoom (void); 
+void scanRoom (void); 
 void checkOrientation(int,int);
 void horizontalShift(double); 
 void verticalShift(double);
-void movementDelay(void);
+void movementdelay(void);
 void scanInit(void);  
 
 

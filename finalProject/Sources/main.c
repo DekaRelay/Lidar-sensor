@@ -37,7 +37,7 @@ void main(void) {
   while (1) // infinite loop scans for room
   {
     scanRoom(); 
-    movementDelay(); // Add delay between each scan element 
+    movementdelay(); // Add delay between each scan element 
   }
   
   

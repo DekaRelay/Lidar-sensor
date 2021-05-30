@@ -34,13 +34,13 @@ The project contains four main modules, these include:
 Servometer operation is controlled by sending a 20 ms PWM signal to pins 5 & 7 of
 Port T. The sub-functions 'horizontalShift' and 'verticalShift' control these actions
 by taking the position as an angular position, in degrees, which is then converted
-into a duty cycle ON period that can replicate the angle in the servometer.
+into a duty cycle ON period that can replicate the angle in the servomotor.
 
 LiDAR operation is controlled by utilising the timer input counter. The pulse width of
 the LiDAR signal is counted after the trigger signal is sent via PHO. The pulse width
 is then converted to a length value that is returned and stored in the output.
 
-Both the LiDAR and Servometer are operated in the main body of the scanRoom function
+Both the LiDAR and Servomotor are operated in the main body of the scanRoom function
 inside a nested loop, the nested loop works to create a square-matrix of positions
 to move the servo through as data points. The (x,y) positions are converted to angles
 and then used as inputs to the servo position functions, the LiDAR distance value is
@@ -50,7 +50,57 @@ has not changed to ensure a consistent scan is completed while being held by the
 
 
 ### Testing Plan & Procedure
-Pending writing of test module
+The testing of the module includes the testing of the servomotors and LiDAR scanner
+individually. The purpose of this is to ensure each component can operate correctly
+when isolated from the rest of the program. The following procedures will help to
+test the performance of each of the components:
+  Testing the Servomotors:
+  1. Connect the PTU and HCS-12 Board
+  2. Select a known angle position to move the servomotor towards during the test.
+     A preferable value is 90 degrees and observing if the position of the LiDAR will
+     be flat and centred.
+  3. Initialise the servomotor communication by running the function servosInit().
+  4. Call the appropriate servomotor function for the desired axis that the
+     movement will occur in. "horiztonalShift()" will move the servomotor in the
+     horizontal axis, "verticalShift()" will move the servomotor in the vertical
+     axis.
+  5. Write the expected angle in degrees as an input to the function and run the
+     code:
+      int angle;
+
+      servosInit();
+      verticalShift(angle) or horizontalShift(angle);
+
+  6. Observe the movement in the servomotor and check that the movement goes to
+     the anticipated position specified in the function call.
+
+  Testing the LiDAR Scanner:
+  1. Connect the PTU and HCS-12 Board
+  2. Initialise the LiDAR and servomotors using the functions initLidar() and
+     servosIniti().
+  3. Set the position of the servomotors to a flat, default position to ensure
+     angles do not influence the measurement. This is achieved by the following
+     lines:
+     horizontalShift(90);
+     verticalShift(90);
+  4. Place a black sheet a known distance away from the LiDAR component.
+  5. Within a continuous loop to check that distance can be measured continuously,
+     call the getDistance() function to measure the distance of the sheet from the
+     LiDAR and store the output in a variable "(double) distance":
+
+        double distance;
+        servosInit();
+        horizontalShift(90);
+        verticalShift(90);
+
+        while (1){
+          distance  = getDistance();
+        }
+    6. Run the above code and set a breakpoint at the getDistance function call.
+    7. Observe the distance value (m) returned to the distance variable in memory
+       and compare to the measured distance of the black sheet.
+    8. Continue running the code to check that consistent measurements are taken
+       and the LiDAR can operate correctly when in a loop.
 
 ## Orientation of PTU Module during scans  
 The Orientation of the PTU Module is done by initialising the IIC sensor. The main
@@ -84,13 +134,13 @@ shows appropriate readings
 are correct (This can be aided with the use of a protractor)
 
 ## Serialisation of Output Data
-One scan of a room involves positioning PTU at chosen 64 different poisitons by adjusting horizontal and vertical angles. At each of these points, lidar sensor gives a distance measurement. 64 of these points is used to create a 8x8 matrix to give a spatial representation of the room. The scanRoom() function creates one scan of the room as described, during the scan each data point is sent via serial port in this format: 
+One scan of a room involves positioning PTU at chosen 64 different poisitons by adjusting horizontal and vertical angles. At each of these points, lidar sensor gives a distance measurement. 64 of these points is used to create a 8x8 matrix to give a spatial representation of the room. The scanRoom() function creates one scan of the room as described, during the scan each data point is sent via serial port in this format:
 <br /> <br />
-A|B||C|D||| 
+A|B||C|D|||
 <br /> <br />
-A,B,C,D represent floating point numbers representing distance measurement from lidar sensor. A singular pipe symbol (|) is used to seperate the numerical values, two pipe symbols in a row indicate new row in matrix, and finally three pipes in a row indicate end of transmission for this particular scan. The above serial data represents matrix: 
+A,B,C,D represent floating point numbers representing distance measurement from lidar sensor. A singular pipe symbol (|) is used to seperate the numerical values, two pipe symbols in a row indicate new row in matrix, and finally three pipes in a row indicate end of transmission for this particular scan. The above serial data represents matrix:
 <br /> <br />
-\[\[A,B\],\[C,D\]\] 
+\[\[A,B\],\[C,D\]\]
 <br /> <br />
 
 This format for serial data transmission was to allow flexibility in code for different resolutions and aspect rations of the spatial scan of room, not just an 8x8 grid. The serial data is sent over via SCI1 port. scanRoom() function is continually called to create continuous scan of room.

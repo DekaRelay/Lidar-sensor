@@ -6,7 +6,6 @@
 #include <math.h>
 
 #include "pll.h"
-#include "simple_serial.h"
 #include "l3g4200d.h"
 #include  "functions.h"
 
@@ -15,8 +14,8 @@ float roll, pitch;
 int maxAnglei, minAnglei, maxAnglej, minAnglej, flag;
 AccelRaw read_accel;
 AccelScaled scaled_accel;
+int error_code; 
 
-int error_code;
 unsigned char buffer[64];
 
 
@@ -33,28 +32,14 @@ void checkOrientation(int i, int j) {
 
   error_code = NO_ERROR;
 
-  // initialise the simple serial
-  SCI1_Init(BAUD_9600);
-
   // initialise the sensor suite
   error_code = iicSensorInit();
-
-  // write the result of the sensor initialisation to the serial
-  if (error_code == NO_ERROR) {
-    sprintf(buffer, "NO_ERROR");
-    SCI1_OutString(buffer);
-  } else {
-    sprintf(buffer, "ERROR %d");
-    SCI1_OutString(buffer);
-  }  
-
+ 
 	EnableInterrupts;
 
   flag = 0; 
   while (flag == 0) {
 
-
-    
       // read the raw accel values
       getRawDataAccel(&read_accel);
 
@@ -73,15 +58,7 @@ void checkOrientation(int i, int j) {
             if (((pitch < maxAnglej) &&  (pitch > minAnglej)) || ((roll < maxAnglej) && (roll > minAnglej))) {
               flag = 1;
             }
-      }
-
-     //format the string of the sensor data to go the the serial
-     sprintf(buffer, "%.2f, %.2f, %.2f, %.2f, %.2f \r\n", scaled_accel.x, scaled_accel.y, scaled_accel.z, pitch, roll);
-
-
-    // output the data to serial
-    SCI1_OutString(buffer);
-  
+      }  
 
   }
 
