@@ -28,16 +28,15 @@ void sendSerial(char* inStr)
   while (1) 
   {
     charData = inStr[index];
+    
+    if (charData == '\0') // Once end of string reached 
+    { 
+      break; 
+    }
+    
     tdreResult = SCI1SR1 & 128;
     if (tdreResult != 0) 
-    {
-      if (charData == '\0') // Once end of string reached 
-      {
-        SCI1DRH = 0;
-        SCI1DRL = '|'; // Indication of speration 
-        break; 
-      }
-      
+    {  
       SCI1DRH = 0;
       SCI1DRL = charData; // Send data
       index = index + 1;
@@ -84,6 +83,7 @@ void scanRoom(void){
         
         sprintf(convertor, "%.2f", distance); // convert double into string
         sendSerial(convertor);
+        sendSerial("|"); // Pipe indicates seperation of values
 
       }
       sendSerial("|"); // Double pipe indicates new row
