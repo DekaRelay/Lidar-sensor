@@ -22,6 +22,47 @@ class Map:
             self.x[i] = int(self.ser.read(8),2)
             # self.x[i] = i-20
         return self.x
+    
+    def read_data_from_sci_arbitrary(self):
+    
+        # Below code is to give general outline of how serial data is to be read
+        
+        flag_count = 0
+        got_num = False
+        num_str = ""
+        num_float = 0
+        
+        
+        # These below can be caluclated
+        num_of_cols = 0 
+        num_of_rows = 0
+        
+        index = 0
+        
+        while (True):
+            data = ord(chr(self.ser.read(8))) # Get ascii value
+            if (data >= 48 and data <= 57): # Ascii check of number 0-9
+                got_num = True
+                num_str += str((data - 48)) # Add number to string
+            elif (data == 46): # Ascii check for decimal point
+                num_str += "."
+            elif (data == ord('|')): # Check ascii values
+                flag_count += 1
+            
+            if (flag_count >= 3):
+                break
+            elif (flag_count == 1 and got_num):
+                
+                num_float = float(num_str)
+                self.x[index] = num_float
+                
+                # Reset all
+                flag_count = 0
+                got_num = False
+                num_str = ""
+                
+            index += 1
+            
 
     def data_output(self):
         return self.x
