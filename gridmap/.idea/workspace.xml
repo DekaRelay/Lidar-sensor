@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="320e27ba-5f8b-4515-8c63-1de9400dc9a1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="320e27ba-5f8b-4515-8c63-1de9400dc9a1" name="Default Changelist" comment="change func name">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/read_sci.py" beforeDir="false" afterPath="$PROJECT_DIR$/read_sci.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,6 +116,10 @@
     </task>
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="change func name" />
+    <option name="LAST_COMMIT_MESSAGE" value="change func name" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="2035" y="-53" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1621413437442">
       <screen x="1920" y="-53" width="1536" height="834" />
@@ -132,6 +135,10 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="361" y="20" key="#main/0.0.1280.689/1920.-53.1536.834@0.0.1280.689" timestamp="1620716782688" />
+    <state x="297" y="0" key="CommitChangelistDialog2" timestamp="1622468503533">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="297" y="0" key="CommitChangelistDialog2/0.0.1280.689/1920.-53.1536.834@0.0.1280.689" timestamp="1622468503533" />
     <state x="2425" y="68" key="FileChooserDialogImpl" timestamp="1621412577038">
       <screen x="1920" y="-53" width="1536" height="834" />
     </state>

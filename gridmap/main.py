@@ -40,7 +40,7 @@ if __name__ == '__main__':
 
     # set a class called user to read sci
     user = read_sci.Map('com3')
-    x = user.read_data_from_sci()
+    x = user.read_data_from_sci_arbitrary()
 
     td = threading.Thread(target=loop1, args=(user.x, PIXEL_ROW, PIXEL_COL))
     tr = threading.Thread(target=loop2, args=(user.port,))
