@@ -11,7 +11,8 @@ ser = serial.Serial(port, 9600, timeout=0.1)
 count_curr = 0
 max_count = 5
 while (True):
-    while(a = ord(byte_data))
+    while(a == ord(byte_data)):
+
         if count_curr >= max_count:
             break
         byte_data = ser.read(8)

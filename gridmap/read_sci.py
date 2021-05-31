@@ -38,8 +38,8 @@ class Map:
         num_of_rows = 0
         
         index = 0
-        while(True)
-            while (a = chr(self.ser.read(8))):
+        while(True):
+            while (a == chr(self.ser.read(8))):
                 data = ord(a) # Get ascii value
                 if (data >= 48 and data <= 57): # Ascii check of number 0-9
                     got_num = True
