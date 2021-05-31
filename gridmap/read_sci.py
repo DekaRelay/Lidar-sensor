@@ -41,28 +41,33 @@ class Map:
         while(True):
             if index >= PIXEL_SIZE:
                 break
+            
+            # Reading byte data from serial
             byte_data = self.ser.read(1) # Read 1 byte data
             if len(byte_data) == 0:
                 continue
             letter = byte_data.decode("UTF-8") # Get letter from byte data
+            
             if (letter == "|"):
                 flag_count += 1
             else:
                 num_str += letter
                 got_num = True
-            if (flag_count >= 3):
+
+            if (flag_count >= 3): # Three | in a row indicate end of matrix transmission
                 break
             elif (flag_count == 1 and got_num):
 
                 num_float = float(num_str)
                 self.x[index] = num_float
+                index += 1
 
                 # Reset all
                 flag_count = 0
                 got_num = False
                 num_str = ""
 
-            index += 1
+            
 
     def data_output(self
             ):
