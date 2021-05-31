@@ -30,8 +30,8 @@ The project contains four main modules, these include:
   - Interfacing between Codewarrior and Python
 
 ## HIGH LEVEL CODE INFORMATION:
-## LiDAR & Servometer Operation
-Servometer operation is controlled by sending a 20 ms PWM signal to pins 5 & 7 of
+## LiDAR & Servomotor Operation
+Servomotor operation is controlled by sending a 20 ms PWM signal to pins 5 & 7 of
 Port T. The sub-functions 'horizontalShift' and 'verticalShift' control these actions
 by taking the position as an angular position, in degrees, which is then converted
 into a duty cycle ON period that can replicate the angle in the servomotor.
