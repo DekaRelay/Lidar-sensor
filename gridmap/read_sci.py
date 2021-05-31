@@ -39,6 +39,8 @@ class Map:
         
         index = 0
         while(True):
+            if index >= PIXEL_SIZE:
+                break
             byte_data = self.ser.read(1) # Read 1 byte data
             if len(byte_data) == 0:
                 continue
