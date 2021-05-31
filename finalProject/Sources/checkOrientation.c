@@ -6,8 +6,9 @@
 #include <math.h>
 
 #include "pll.h"
+#include "l3g4200d_definitions.h"
 #include "l3g4200d.h"
-#include  "functions.h"
+#include "functions.h"
 
 
 float roll, pitch;

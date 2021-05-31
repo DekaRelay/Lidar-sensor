@@ -1,4 +1,5 @@
 #include <hidef.h>      /* common defines and macros */
+#include <stdio.h> 
 #include "derivative.h"      /* derivative-specific definitions */
 #include "interrupts.h"     //Interrupt vector header
 #include "functions.h"
@@ -73,8 +74,12 @@ void scanRoom(void){
       //Loop through horizontal positions
       for (y=1; y<= points; ++y){
         //Orientate LiDAR
-        checkOrientation(x, y); 
-
+        checkOrientation(x, y);
+         
+        DisableInterrupts; 
+        //Dummy function call primes counter  to ensure that timers in checkOrientation 
+        // do not force incorrect counts to be recorded in the final distance value 
+        distance = getDistance(); 
         //Position the servo horizontally
         horizontalShift(y * interval);
 
@@ -84,6 +89,8 @@ void scanRoom(void){
         sprintf(convertor, "%.2f", distance); // convert double into string
         sendSerial(convertor);
         sendSerial("|"); // Pipe indicates seperation of values
+        
+
 
       }
       sendSerial("|"); // Double pipe indicates new row
@@ -96,6 +103,7 @@ void scanRoom(void){
    verticalShift(90); 
    PWME_PWME5 = 0;
    PWME_PWME7 = 0; 
+   
 }
 
 
@@ -155,14 +163,24 @@ void initLidar(void){
 //Function to obtain distance value from LiDAR
 double getDistance(void){
 
- TSCR1 = 0x90;                  //  Enable timer count and fast timer flag clear
+//Reset all counter variables to ensure nothing intereferes with timer count 
+ TSCR1 = 0x00; 
+ TCTL1 = 0x00; 
+ TCTL2 = 0x00; 
+ PACTL = 0x00;
+ TIE   = 0x00; 
+ TCNT  = 0x00;
+ IBCR  = 0x00;  
+  
+ 
  TSCR2 = 0x03;                  //  Set prescaler to 16
  TIOS_IOS1 = 0;                 //  Enable input capture
- DLYCT = 0x07;                  //  Set delay count to 1024 E cycles to eliminate noise
+ DLYCT = 0x03;                  //  Set delay count to 1024 E cycles to eliminate noise
  ICOVW_NOVW1 = 1;               //  Disable overwrite to TC1 register
  ICSYS = 0;                     //  Disable queue mode
  TCTL4 = 0x04;                  //  Capture the rising edge
  TFLG1_C1F = 1;                 //  Clear C1F flag
+ TSCR1 = 0x90;                  //  Enable timer count and fast timer flag clear
 
  PTH_PTH0 = 0;                  //  Send trigger signal to LiDAR
  while (!(TFLG1_C1F));          //  Wait for rising edge
@@ -177,7 +195,9 @@ double getDistance(void){
 
  PTH_PTH0 = 1;                  //  Disable LiDAR trigger
  length = ((double)pulse_width )/3000;   // Convert the width from counts to milliseconds
-     TSCR1 = 0x00;  
+ 
+ TSCR1 = 0x00;                  //  Disable timer 
+ TFLG1_C1F = 1;                 //  Clear C1F flag  
 
  return length - 0.1;           // Return the timed width of the pulse
 
