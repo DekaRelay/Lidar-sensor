@@ -39,29 +39,28 @@ class Map:
         
         index = 0
         while(True):
-            while (a == chr(self.ser.read(8))):
-                data = ord(a) # Get ascii value
-                if (data >= 48 and data <= 57): # Ascii check of number 0-9
-                    got_num = True
-                    num_str += str((data - 48)) # Add number to string
-                elif (data == 46): # Ascii check for decimal point
-                    num_str += "."
-                elif (data == ord('|')): # Check ascii values
-                    flag_count += 1
+            byte_data = self.ser.read(1) # Read 1 byte data
+            if len(byte_data) == 0:
+                continue
+            letter = byte_data.decode("UTF-8") # Get letter from byte data
+            if (letter == "|"):
+                flag_count += 1
+            else:
+                num_str += letter
+                got_num = True
+            if (flag_count >= 3):
+                break
+            elif (flag_count == 1 and got_num):
 
-                if (flag_count >= 3):
-                    break
-                elif (flag_count == 1 and got_num):
+                num_float = float(num_str)
+                self.x[index] = num_float
 
-                    num_float = float(num_str)
-                    self.x[index] = num_float
+                # Reset all
+                flag_count = 0
+                got_num = False
+                num_str = ""
 
-                    # Reset all
-                    flag_count = 0
-                    got_num = False
-                    num_str = ""
-
-                index += 1
+            index += 1
 
     def data_output(self
             ):
