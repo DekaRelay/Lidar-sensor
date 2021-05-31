@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="320e27ba-5f8b-4515-8c63-1de9400dc9a1" name="Default Changelist" comment="change func name">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/read_sci.py" beforeDir="false" afterPath="$PROJECT_DIR$/read_sci.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/serial_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/serial_test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
