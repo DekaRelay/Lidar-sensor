@@ -14,8 +14,9 @@ while (True):
         if count_curr >= max_count:
             break
         byte_data = ser.read(1)
+        if len(byte_data) == 0:
+            continue
         letter = byte_data.decode("UTF-8")
-        print(letter)
-        count_curr += 1
+        print(letter, end="")
 
 
