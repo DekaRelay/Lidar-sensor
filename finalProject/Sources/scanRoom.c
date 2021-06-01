@@ -56,11 +56,15 @@ void scanInit(void)
 void scanRoom(void){
 
     // Initialise the operation range for the servos in degrees
-   int motorMax = 160;
-   int motorMin = 20;
+   int motorMaxVertical = 140;
+   int motorMinVertical = 30;
+   
+   int motorMaxHorizontal = 160;
+   int motorMinHorizonal = 50;
 
    //Determine the data intervals position the LiDAR for data points
-   double interval = (motorMax - motorMin)/8;
+   double verticalInterval = (motorMaxVertical - motorMinVertical)/8;
+   double horiztonalInterval = (motorMaxHorizontal - motorMinHorizonal)/8;
 
    //Initialise number of axis points for the loop to stop at 
 
@@ -69,7 +73,7 @@ void scanRoom(void){
    //Loop through vertical positions, rows
    for (x = points; x >= 0; --x){
       //Position the servo
-      verticalShift(x * interval);
+      verticalShift(motorMinVertical + x * verticalInterval);
 
       //Loop through horizontal positions
       for (y=1; y<= points; ++y){
@@ -81,7 +85,7 @@ void scanRoom(void){
         // do not force incorrect counts to be recorded in the final distance value 
         distance = getDistance(); 
         //Position the servo horizontally
-        horizontalShift(y * interval);
+        horizontalShift(motorMinHorizonal + y * horiztonalInterval);
 
         //Obtain the distance from the LiDAR
         distance = getDistance();

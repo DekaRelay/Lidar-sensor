@@ -32,15 +32,15 @@ void main(void) {
   setupSerialPt1(); // Setup serial port 1 
   scanInit(); // Initialize lidar and servo
   
-  while (1) // infinite loop scans for room
+  /*while (1) // infinite loop scans for room
   {
     scanRoom(); 
     movementdelay(); // Add delay between each scan element 
-  }
+  }   */
   
   
   // ***** UNCOMMENT BELOW LINE FOR 1 SCAN (DEMONSTRATION)
-  //scanRoom();
+  scanRoom();
 
 
 
